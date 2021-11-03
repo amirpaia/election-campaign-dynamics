@@ -9,13 +9,14 @@ summa = "*"
 spacy = "*"
 pytextrank = "*"
 rake-nltk = "*"
-numpy = "==1.19.5"
 hdbscan = "*"
 pandas = "*"
 bertopic = "*"
+numpy = "*"
+nbformat = "==4.2.0"
+ipykernel = "*"
 
 [dev-packages]
-ipykernel = "*"
 
 [requires]
 python_version = "3.8"
