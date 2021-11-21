@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Website\Website.csproj", "{5F3B7499-0060-4043-8344-2A06B7B996BA}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Bertopic", "Bertopic\Bertopic.pyproj", "{54F8AADF-BF65-4AE3-B31B-BAAADF9C6995}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FlaskWebsite", "FlaskWebsite\FlaskWebsite.pyproj", "{D1CAAFD1-C023-4CCE-A3AC-E8D52E3EE3CB}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BertopicConsole", "BertopicConsole\BertopicConsole.pyproj", "{9E42FBAA-93A7-49A3-9073-A4998C60BDDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F3B7499-0060-4043-8344-2A06B7B996BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3B7499-0060-4043-8344-2A06B7B996BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3B7499-0060-4043-8344-2A06B7B996BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3B7499-0060-4043-8344-2A06B7B996BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F8AADF-BF65-4AE3-B31B-BAAADF9C6995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F8AADF-BF65-4AE3-B31B-BAAADF9C6995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F8AADF-BF65-4AE3-B31B-BAAADF9C6995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F8AADF-BF65-4AE3-B31B-BAAADF9C6995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1CAAFD1-C023-4CCE-A3AC-E8D52E3EE3CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CAAFD1-C023-4CCE-A3AC-E8D52E3EE3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CAAFD1-C023-4CCE-A3AC-E8D52E3EE3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1CAAFD1-C023-4CCE-A3AC-E8D52E3EE3CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E42FBAA-93A7-49A3-9073-A4998C60BDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E42FBAA-93A7-49A3-9073-A4998C60BDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5032901-1E10-46FA-A35B-E2E420223F7E}
+	EndGlobalSection
+EndGlobal

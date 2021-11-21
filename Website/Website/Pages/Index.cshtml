@@ -1,0 +1,86 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Election Corpus";
+}
+
+<div class="text-center mb-10">
+    <h1 class="display-4">Create Election Corpus:</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
+
+<div class=row>
+    @*<div class="col-sm-3">
+        <span>Candidate Names:</span>
+        <ul>
+        @foreach (var candidate in Model.CandidateList)
+        {
+        <li>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+        <label class="form-check-label" for="flexCheckIndeterminate">
+        @candidate
+        </label>
+        </div>
+        </li>
+        }
+        </ul>
+        </div>*@
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <form method="post" asp-action="">
+
+                <div class="col-sm-12 mb-3">
+                    <select class="form-select" aria-label="Default select example" asp-for="TwitterId">
+                        <option selected>Select one Candiadate:</option>
+                        @foreach (var item in Model.CandidateList)
+                        {
+                            <option value="@item.Key">@item.Value</option>
+                        }
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <label>From</label>
+                        <input type="date" class="form-control" asp-for="DateFrom">
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label>To</label>
+                        <input type="date" class="form-control" asp-for="DateTo">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <form method="post" asp-action="">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@@</span>
+                    <input type="text" asp-for="TwitterId" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <label>From</label>
+                        <input type="date" class="form-control" asp-for="DateFrom">
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label>To</label>
+                        <input type="date" class="form-control" asp-for="DateTo">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+</div>
+

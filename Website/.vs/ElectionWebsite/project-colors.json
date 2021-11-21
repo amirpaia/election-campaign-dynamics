@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5f3b7499-0060-4043-8344-2a06b7b996ba": {
+      "ProjectGuid": "5f3b7499-0060-4043-8344-2a06b7b996ba",
+      "DisplayName": "Website",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "d1caafd1-c023-4cce-a3ac-e8d52e3ee3cb": {
+      "ProjectGuid": "d1caafd1-c023-4cce-a3ac-e8d52e3ee3cb",
+      "DisplayName": "FlaskWebsite",
+      "ColorIndex": 1
+    },
+    "9e42fbaa-93a7-49a3-9073-a4998c60bdde": {
+      "ProjectGuid": "9e42fbaa-93a7-49a3-9073-a4998c60bdde",
+      "DisplayName": "BertopicConsole",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
