@@ -14,6 +14,7 @@ def home():
         'index.html',
         title='Home Page',
         year=datetime.now().year,
+        amir = 123456
     )
 
 @app.route('/contact')

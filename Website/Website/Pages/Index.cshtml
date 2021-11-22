@@ -32,7 +32,7 @@
 
                 <div class="col-sm-12 mb-3">
                     <select class="form-select" aria-label="Default select example" asp-for="TwitterId">
-                        <option selected>Select one Candiadate:</option>
+                        <option selected>Select one Candidate:</option>
                         @foreach (var item in Model.CandidateList)
                         {
                             <option value="@item.Key">@item.Value</option>

@@ -20,7 +20,12 @@
       "ProjectGuid": "9e42fbaa-93a7-49a3-9073-a4998c60bdde",
       "DisplayName": "BertopicConsole",
       "ColorIndex": 2
+    },
+    "54f8aadf-bf65-4ae3-b31b-baaadf9c6995": {
+      "ProjectGuid": "54f8aadf-bf65-4ae3-b31b-baaadf9c6995",
+      "DisplayName": "Bertopic",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }

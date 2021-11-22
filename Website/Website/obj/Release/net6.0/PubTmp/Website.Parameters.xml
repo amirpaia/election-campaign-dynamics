@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="election2022" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\university-nlp\\software-project\\sources\\Website\\ElectionWebsite\\Website\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\university-nlp\\software-project\\github\\election-campaign-dynamics\\Website\\Website\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>
