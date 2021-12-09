@@ -25,7 +25,12 @@
       "ProjectGuid": "54f8aadf-bf65-4ae3-b31b-baaadf9c6995",
       "DisplayName": "Bertopic",
       "ColorIndex": 3
+    },
+    "deb35175-7cf6-481d-8102-1c083fb01dee": {
+      "ProjectGuid": "deb35175-7cf6-481d-8102-1c083fb01dee",
+      "DisplayName": "FlaskWebProject",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }
