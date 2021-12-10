@@ -30,7 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
-    <Compile Include="FlaskWebsite\index.py">
+    <Compile Include="FlaskWebsite\data\twitter.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FlaskWebsite\__init__.py" />
@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FlaskWebsite\" />
+    <Folder Include="FlaskWebsite\data\" />
     <Folder Include="FlaskWebsite\static\" />
     <Folder Include="FlaskWebsite\static\content\" />
     <Folder Include="FlaskWebsite\static\fonts\" />

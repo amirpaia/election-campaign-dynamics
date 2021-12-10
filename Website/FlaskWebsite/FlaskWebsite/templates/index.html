@@ -5,7 +5,7 @@
 <div class="text-center mb-10">
     <h1 class="display-4">Create Election Corpus:</h1>
 </div>
-{{ response }}
+
 <div class=row>
     <div class="card col-sm-6">
         <div class="card-body">
@@ -14,7 +14,7 @@
                     <select class="form-select" aria-label="Default select example" name="TwitterId">
                         <option selected>Select one Candidate:</option>
                         {% for key,value in candidate_list.items(): %}
-                            <option value="{{ key }}">{{ value }}</option>
+                        <option value="{{ key }}">{{ value }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -28,17 +28,21 @@
                         <input type="date" class="form-control" name="DateTo" value="{{ DateTo }}">
                     </div>
                 </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <button type="submit" class="btn btn-dark" formaction="{{ url_for('download_corpus') }}">Download</button>
+                    </div>
                 </div>
-
             </form>
         </div>
     </div>
 
     <div class="card col-sm-6">
         <div class="card-body">
-            <form method="post" action="">
+            <form method="post" action="{{ url_for('create_corpus') }}">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" name="TwitterId" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
@@ -61,6 +65,16 @@
     </div>
 
 
+</div>
+<div>
+    {% for tweet in tweets %}
+    <div>
+        tweet
+    </div>
+    <div>
+        tweet['tweet_text']
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
