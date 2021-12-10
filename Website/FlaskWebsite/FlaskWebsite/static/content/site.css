@@ -1,42 +1,69 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    margin-bottom: 60px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/* _content/Website/Pages/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+a {
+    color: #0077cc;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-.field-validation-valid {
-    display: none;
+.nav-pills .nav-link.active[b-y1m2c1ijh3], .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-input.input-validation-error {
-    border: 1px solid #b94a48;
+.border-top {
+    border-top: 1px solid #e5e5e5;
 }
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
 }
 
-.validation-summary-errors {
-    color: #b94a48;
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-.validation-summary-valid {
-    display: none;
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }

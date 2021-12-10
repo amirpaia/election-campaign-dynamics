@@ -2,32 +2,79 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<div class="text-center mb-10">
+    <h1 class="display-4">Create Election Corpus:</h1>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
+<div class=row>
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <form method="post" action="{{ url_for('create_corpus')}}">
+                <div class="col-sm-12 mb-3">
+                    <select class="form-select" aria-label="Default select example" name="TwitterId">
+                        <option selected>Select one Candidate:</option>
+                        {% for key,value in candidate_list.items(): %}
+                        <option value="{{ key }}">{{ value }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <label>From</label>
+                        <input type="date" class="form-control" name="DateFrom" value="{{ DateFrom }}">
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label>To</label>
+                        <input type="date" class="form-control" name="DateTo" value="{{ DateTo }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <button type="submit" class="btn btn-dark" formaction="{{ url_for('download_corpus') }}">Download</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
+
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <form method="post" action="{{ url_for('create_corpus') }}">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="TwitterId" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <label>From</label>
+                        <input type="date" class="form-control" name="DateFrom" value="{{ DateFrom }}">
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <label>To</label>
+                        <input type="date" class="form-control" name="DateTo" value="{{ DateTo }}">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+
+
+</div>
+<div>
+    {% for tweet in tweets %}
+    <div>
+        tweet
     </div>
+    <div>
+        tweet['tweet_text']
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
