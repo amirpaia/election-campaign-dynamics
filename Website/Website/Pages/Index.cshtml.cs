@@ -59,57 +59,72 @@ namespace Website.Pages
                 return Page();
             }
 
-            string consumerKey = "MmiVY1qtW6NKXEUqDMIhxH7Zk";
-            string consumerSecret = "9uVYrtEtdmZiAzUFNqPyj3eU2uFyUUiUPeHde6zcWgWsCKiqI8";
-            string accessToken = "25368429-RIo1mxKU0vDl5fwgdkzjUr3KexrkpuasuCFC4809J";
-            string accessSecret = "2lKjkdBuTziqLAJ1jKJp5fyQwAIoiZVY6KqEC1QuAKo3M";
-
-            var userClient = new TwitterClient(consumerKey, consumerSecret, accessToken, accessSecret);
-
-            var userTimelineIterator = userClient.Timelines.GetUserTimelineIterator(TwitterId);
-            var tweetsList = new List<TweetModel>();
-
-            while (!userTimelineIterator.Completed)
+            try
             {
-                var page = await userTimelineIterator.NextPageAsync();
-                var tweets = page.Where(a => a.CreatedAt >= DateFrom && a.CreatedAt < DateTo.AddDays(1)).Select(a => a);
-                foreach (var tweet in tweets)
+                string consumerKey = "MmiVY1qtW6NKXEUqDMIhxH7Zk";
+                string consumerSecret = "9uVYrtEtdmZiAzUFNqPyj3eU2uFyUUiUPeHde6zcWgWsCKiqI8";
+                string accessToken = "25368429-RIo1mxKU0vDl5fwgdkzjUr3KexrkpuasuCFC4809J";
+                string accessSecret = "2lKjkdBuTziqLAJ1jKJp5fyQwAIoiZVY6KqEC1QuAKo3M";
+
+                var userClient = new TwitterClient(consumerKey, consumerSecret, accessToken, accessSecret);
+
+                var twitterAccount = await userClient.Users.GetUserAsync(TwitterId);
+
+                var userTimelineIterator = userClient.Timelines.GetUserTimelineIterator(TwitterId);
+                var tweetsList = new List<TweetModel>();
+
+                while (!userTimelineIterator.Completed)
                 {
-                    tweetsList.Add(
-                        new TweetModel
-                        {
-                            Id = tweet.IdStr,
-                            Text = tweet.FullText,
-                            RetweetCount = tweet.RetweetCount,
-                            FavoriteCount = tweet.FavoriteCount,
-                            DateTime = tweet.CreatedAt.ToString(),
-                            Hashtags = String.Join(",", tweet.Hashtags),
-                            IsRetweet = tweet.IsRetweet,
-                            IsQuote = tweet.QuotedTweet != null,
-                            Mention = String.Join(",", tweet.UserMentions)
-                        });
+                    var page = await userTimelineIterator.NextPageAsync();
+                    var tweets = page.Where(a => a.CreatedAt >= DateFrom && a.CreatedAt < DateTo.AddDays(1)).Select(a => a);
+                    foreach (var tweet in tweets)
+
+                    {
+                        tweetsList.Add(
+                            new TweetModel
+                            {
+                                Id = tweet.IdStr,
+                                TwitterId = twitterAccount.ScreenName,
+                                CandidateName = twitterAccount.Name,
+                                Text = tweet.FullText,
+                                RetweetCount = tweet.RetweetCount,
+                                FavoriteCount = tweet.FavoriteCount,
+                                DateTime = tweet.CreatedAt.ToString(),
+                                Hashtags = String.Join(",", tweet.Hashtags),
+                                IsRetweet = tweet.IsRetweet,
+                                IsQuote = tweet.QuotedTweet != null,
+                                Mention = String.Join(",", tweet.UserMentions)
+                            });
+                    }
+                    TweetCount += page.Count();
                 }
-                TweetCount += page.Count();
-                break;
-            }
 
-            var file = SaveToCSV(tweetsList);
-            if (!string.IsNullOrEmpty(file))
+                var file = SaveToCSV(tweetsList);
+                if (!string.IsNullOrEmpty(file))
+                {
+                    var dt = DateTime.Now;
+                    Response.Headers.Add("content-disposition", "inline;filename=" + $"{TwitterId}-{dt.ToShortDateString()}-{dt.ToShortTimeString()}.tsv");
+                    return Content(file, "text/tsv", Encoding.UTF8);
+                }
+
+            }
+            catch (Exception ex)
             {
-                var dt = DateTime.Now;
-                Response.Headers.Add("content-disposition", "inline;filename=" + $"{TwitterId}-{dt.ToShortDateString()}-{dt.ToShortTimeString()}.csv");
-                return Content(file, "text/csv", Encoding.UTF8);
+                ViewData["Message"] = "The input data is not correct!";
             }
-
             return Page();
         }
 
         private string SaveToCSV(List<TweetModel> tweets)
         {
+            CsvConfiguration config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = "\t"
+            };
             var result = "";
             using (var mem = new MemoryStream())
             using (var writer = new StreamWriter(mem))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            using (var csv = new CsvWriter(writer, config))
             {
                 csv.WriteRecords(tweets);
 
@@ -119,7 +134,6 @@ namespace Website.Pages
                 writer.Flush();
                 result = Encoding.UTF8.GetString(mem.ToArray());
             }
-            //return result;
             return result;
         }
     }
