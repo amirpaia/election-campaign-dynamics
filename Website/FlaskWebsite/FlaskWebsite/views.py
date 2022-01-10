@@ -55,8 +55,8 @@ def download_corpus():
     dfTweeets = get_tweets(twitterId, dateFrom, dateTo)
 
     dateToday = datetime.now()
-    resp = make_response(dfTweeets.to_csv(sep ='\t'))
-    resp.headers["Content-Disposition"] = f'attachment; filename={twitterId}-{dateToday}.csv'
+    resp = make_response(dfTweeets.to_excel())
+    resp.headers["Content-Disposition"] = f'attachment; filename={twitterId}-{dateToday}.xlsx'
     resp.headers["Content-Type"] = "text/csv"
     return resp
 
@@ -85,16 +85,30 @@ def about():
 def get_candidate():
     candidate_list = {
         'n_arthaud': 'Nathalie Arthaud',
-        'upr_asselineau': 'Francois Asselineau',
+        'upr_asselineau': 'François Asselineau',
         'dupontaignan': 'Nicolas Dupont-Aignan',
         'Anne_Hidalgo':'Anne Hidalgo',
         'yjadot':'Yannick Jadot',
         'jeanlassalle':'Jean Lassalle',
         'MLP_officiel':'Marine Le Pen',
         'JLMelenchon':'Jean-Luc Melenchon',
-        'montebourg':'Arnaud Montebourg',
-        'jfpoisson78':'Jean-Frederic Poisson',
         'PhilippePoutou':'Philippe Poutou',
+        'ChTaubira' : 'Christiane Taubira',
+        'AnasseKazib' : 'Anasse Kazib',
+        'FabriceGrimal':'Fabrice Grimal',
+        'larrouturou':'Pierre Larrouturou',
+        'montebourg':'Arnaud Montebourg',
+        'Waechter2022':'Antoine Waechter',
+        'EmmanuelMacron':'Emmanuel Macron',
+        'vpecresse':'Valérie Pécresse',
+        'antoine27955080':'Antoine Martinez',
+        'f_philippot':'Florian Philippot',
+        'ZemmourEric':'Eric Zemmour',
+        'Cau_Marie_': 'Marie Cau',
+        'ClaraEgger1':'Clara Egger',
+        'AlexLanglois_':'Alexandre Langlois',
+        'HeleneThouy':'HélèneThouy',
+        'Vukuzman':'Georges Kuzmanovic',
         'Fabien_Roussel':'Fabien Roussel'
     }
     return candidate_list
