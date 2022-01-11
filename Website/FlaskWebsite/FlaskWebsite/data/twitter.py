@@ -68,6 +68,7 @@ def get_tweets(twitterId, dateFrom, dateTo):
             for dicti in i.entities['hashtags']:
                 temp_hashtags.append(dicti['text'])
             hashtags.append(temp_hashtags)
+
     for tweet in tweets:
         de_emojized = emoji.demojize(tweet.replace(':', ' '))
         emojis = re.findall(r'(:[^:]*:)', de_emojized)

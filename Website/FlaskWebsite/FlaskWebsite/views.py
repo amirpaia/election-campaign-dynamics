@@ -2,6 +2,7 @@
 Routes and views for the flask application.
 """
 
+import codecs
 from datetime import datetime, timedelta
 from flask import request, redirect
 from flask import render_template
@@ -55,9 +56,10 @@ def download_corpus():
     dfTweeets = get_tweets(twitterId, dateFrom, dateTo)
 
     dateToday = datetime.now()
-    resp = make_response(dfTweeets.to_excel())
-    resp.headers["Content-Disposition"] = f'attachment; filename={twitterId}-{dateToday}.xlsx'
-    resp.headers["Content-Type"] = "text/csv"
+    bom = codecs.BOM_UTF8.decode()
+    resp = make_response(bom + dfTweeets.to_csv())
+    resp.headers["Content-Disposition"] = f'attachment; filename={twitterId}-{dateToday}.csv'
+    resp.headers["Content-Type"] = "text/csv; charset=utf-8"
     return resp
 
 @app.route('/contact')
@@ -97,7 +99,6 @@ def get_candidate():
         'AnasseKazib' : 'Anasse Kazib',
         'FabriceGrimal':'Fabrice Grimal',
         'larrouturou':'Pierre Larrouturou',
-        'montebourg':'Arnaud Montebourg',
         'Waechter2022':'Antoine Waechter',
         'EmmanuelMacron':'Emmanuel Macron',
         'vpecresse':'Valérie Pécresse',
