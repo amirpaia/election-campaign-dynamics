@@ -8,6 +8,10 @@ from flask import request, redirect
 from flask import render_template
 from flask import Flask, make_response, send_file
 from flask.wrappers import Response
+import matplotlib.pyplot as plt, mpld3
+import numpy as np
+from urllib import parse
+
 
 import csv
 from datetime import datetime
@@ -17,6 +21,7 @@ import pandas as pd
 
 from FlaskWebsite import app
 from FlaskWebsite.data.twitter import get_tweets
+from FlaskWebsite.data.youtube import get_captions
 
 @app.route('/')
 @app.route('/home')
@@ -62,6 +67,18 @@ def download_corpus():
     resp.headers["Content-Type"] = "text/csv; charset=utf-8"
     return resp
 
+@app.route('/download_youtube', methods=['POST'])
+def download_youtube():
+    url = request.form['Url']
+    parameters = dict(parse.parse_qsl(parse.urlsplit(url).query))
+    df = get_captions(parameters["v"])
+    dateToday = datetime.now()
+    bom = codecs.BOM_UTF8.decode()
+    resp = make_response(bom + df.to_csv())
+    resp.headers["Content-Disposition"] = f'attachment; filename=youtube-{dateToday}.csv'
+    resp.headers["Content-Type"] = "text/csv; charset=utf-8"
+    return resp
+
 @app.route('/contact')
 def contact():
     """Renders the contact page."""
@@ -82,6 +99,27 @@ def about():
         message='Your application description page.'
     )
 
+@app.route('/show_plot', methods=['POST'])
+def show_plot():
+    fig, ax = plt.subplots(subplot_kw=dict(facecolor='#EEEEEE'))
+    N = 100
+
+    scatter = ax.scatter(np.random.normal(size=N),
+                         np.random.normal(size=N),
+                         c=np.random.random(size=N),
+                         s=1000 * np.random.random(size=N),
+                         alpha=0.3,
+                         cmap=plt.cm.jet)
+    ax.grid(color='white', linestyle='solid')
+
+    ax.set_title("Scatter Plot (with tooltips!)", size=20)
+
+    labels = ['point {0}'.format(i + 1) for i in range(N)]
+    tooltip = mpld3.plugins.PointLabelTooltip(scatter, labels=labels)
+    mpld3.plugins.connect(fig, tooltip)
+
+    return mpld3.show()
+    
 
 
 def get_candidate():

@@ -30,7 +30,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6 mb-3">
-                        <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                        <button type="submit" class="btn btn-primary">Download</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-dark" formaction="{{ url_for('show_plot') }}">Show</button>
                     </div>
                 </div>
             </form>
@@ -39,12 +42,12 @@
 
     <div class="card col-sm-6">
         <div class="card-body">
-            <form method="post" action="{{ url_for('download_corpus') }}">
+            <form method="post" action="{{ url_for('download_youtube') }}">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" name="TwitterId" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" name="Url" class="form-control" placeholder="Youtube Video Url" aria-label="Url" aria-describedby="basic-addon1">
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-sm-6 mb-3">
                         <label>From</label>
                         <input type="date" class="form-control" name="DateFrom" value="{{ DateFrom }}">
@@ -53,9 +56,9 @@
                         <label>To</label>
                         <input type="date" class="form-control" name="DateTo" value="{{ DateTo }}">
                     </div>
-                </div>
+                </div>-->
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Create the file & Download</button>
+                    <button type="submit" class="btn btn-primary">Download</button>
                 </div>
             </form>
         </div>
