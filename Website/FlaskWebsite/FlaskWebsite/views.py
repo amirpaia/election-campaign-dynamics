@@ -147,6 +147,7 @@ def get_candidate():
         'ClaraEgger1':'Clara Egger',
         'AlexLanglois_':'Alexandre Langlois',
         'HeleneThouy':'HélèneThouy',
+        'MouvementSimple': 'Gaspard Koenig',
         'Vukuzman':'Georges Kuzmanovic',
         'Fabien_Roussel':'Fabien Roussel'
     }
