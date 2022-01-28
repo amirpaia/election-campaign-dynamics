@@ -37,6 +37,8 @@ def get_tweets(twitterId, dateFrom, dateTo):
     fav_count = []
     rt_count = []
     time = []
+    time_Y_M_D = []
+    time_H_M_S = []
     is_quote = []
     in_reply_to = []
     tweet_id = []
@@ -52,6 +54,8 @@ def get_tweets(twitterId, dateFrom, dateTo):
             name.append(i.user.name)
             tweets.append(i.full_text)
             time.append(i.created_at)
+            time_Y_M_D.append(i.created_at.strftime('%Y-%m-%d %X')[:10])
+            time_H_M_S.append(i.created_at.strftime('%Y-%m-%d %X')[-8:])
             bio.append(i.user.description)
             follower_count.append(i.user.followers_count)
             fav_count.append(i.favorite_count)
@@ -87,7 +91,9 @@ def get_tweets(twitterId, dateFrom, dateTo):
                   'is_quote': is_quote, 
                   'hashtags': hashtags,
                   'emojicons': emojicons,
-                  'time':time
+                  'time':time,
+                  'time_Y_M_D' : time_Y_M_D,
+                  'time_H_M_S' : time_H_M_S     
                   })
 
     columns = ['mentions', 'hashtags', 'emojicons']
